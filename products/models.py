@@ -3,6 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Category(models.Model):
+    class Meta:
+        verbose_name_plural = 'Categories'
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(max_length=254, null=True, blank=True)
 
@@ -15,9 +17,9 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
-    alcoholic = models.BooleanField(True)
+    alcoholic = models.BooleanField(default=1, blank=False)
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.IntegerField()
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
