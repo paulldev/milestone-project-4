@@ -19,6 +19,8 @@
 		/>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
 		{% endblock %} {% block extra_css %} {% endblock %}
 
 		<title>Sandnes Biljard {% block extra_title %}{% endblock %}</title>
@@ -39,7 +41,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-					<a class="navbar-brand" href="#">Sandnes Biljard</a>
+					<a class="navbar-brand" href="{% url 'home' %}">Sandnes Biljard</a>
 					<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 						<li class="nav-item dropdown">
 							<div class="dropdown">
