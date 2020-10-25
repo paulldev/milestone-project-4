@@ -1,15 +1,15 @@
 from django.conf import settings
 
-def bag_contents(request):
+def cart_contents(request):
 
-    bag_items = []
+    cart_items = []
     total = 0
     product_count = 0
-    
-    grand_total = delivery + total
+
+    grand_total = total
     
     context = {
-        'bag_items': bag_items,
+        'cart_items': cart_items,
         'total': total,
         'product_count': product_count,
         'grand_total': grand_total,
