@@ -17,7 +17,7 @@ class Category(models.Model):
 class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
-    alcoholic = models.BooleanField(default=1, blank=False)
+    alcoholic = models.BooleanField(default=True, null=False, blank=False)
     description = models.TextField()
     price = models.IntegerField()
     image_url = models.URLField(max_length=1024, null=True, blank=True)
