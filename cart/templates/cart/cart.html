@@ -1,4 +1,7 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
+{% load cart_tools %}
+{% block content %}
 <div class="container mb-2">
 	<div class="row">
 		<div class="col">
@@ -41,7 +44,7 @@
 							<p class="my-0">{{ item.quantity }}</p>
 						</td>
 						<td class="py-3">
-							<p class="my-0">NOK {{ item.product.price }}</p>
+							<p class="my-0">NOK {{ item.product.price | calc_subtotal:item.quantity }}</p>
 						</td>
 					</tr>
 					{% endfor %}
