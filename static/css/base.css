@@ -2,9 +2,22 @@ html {
     height: 100%;
 }
 body {
+    background-color: lightgoldenrodyellow;
+    padding-top: 95px;
 /*    background: url('/media/homepage_background.jpg') no-repeat center center fixed;
     background-size: cover;*/
-    height: calc(100vh - 164px);
-    color: #555;
+    height: 100vh;
+/*    color: #555;*/
     font-family: 'Ubuntu', sans-serif;
+}
+.card-img-top {
+    width: auto;
+    height: 25vw;
+    object-fit: contain;
+}
+#cart-table img {
+    width: auto;
+    height: 6vw;
+    object-fit: contain;
+
 }
