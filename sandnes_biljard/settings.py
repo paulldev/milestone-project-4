@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'crispy_forms',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -168,6 +169,14 @@ STATICFILES_DIRS = (BASE_DIR / 'static',) #must be a tuple
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'ci-milestoneproject-4'
+    AWS_S3_REGION_NAME = 'eu-stockholm'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
 
 # Stripe
 STRIPE_CURRENCY = 'nok'
