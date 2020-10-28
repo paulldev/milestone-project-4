@@ -125,9 +125,6 @@ else:
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
-DATABASES = {
-    'default': dj_database_url.parse('postgres://wmyfctxkaejqxo:248d3f5bf398b5eecb7d457756d1c2acdd0ed5ec43e29b6ed9d3f6898943cea3@ec2-34-251-118-151.eu-west-1.compute.amazonaws.com:5432/d1bk0sltpfhra6')
-}
 
 
 # Password validation
