@@ -1,0 +1,1 @@
+web: gunicorn sandnes_biljard.wsgi:application
