@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,7 +26,7 @@ SECRET_KEY = '-z+!ek$b-u4a#&v%f9r&j!0&)(kx13=6uc#l+3%2+!wq$)2_^m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ci-milestoneproject-4.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -113,11 +114,19 @@ WSGI_APPLICATION = 'sandnes_biljard.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if 'DATABASE_URL' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+DATABASES = {
+    'default': dj_database_url.parse('postgres://wmyfctxkaejqxo:248d3f5bf398b5eecb7d457756d1c2acdd0ed5ec43e29b6ed9d3f6898943cea3@ec2-34-251-118-151.eu-west-1.compute.amazonaws.com:5432/d1bk0sltpfhra6')
 }
 
 
