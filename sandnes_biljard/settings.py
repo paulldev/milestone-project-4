@@ -116,10 +116,12 @@ WSGI_APPLICATION = 'sandnes_biljard.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 if 'DATABASE_URL' in os.environ:
+    print("*****Postgres database used*****")
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
 else:
+    print("*****Sqlite3 database used*****")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -188,6 +190,10 @@ if 'USE_AWS' in os.environ:
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
+print("*****STATIC_URL*****")
+print(STATIC_URL)
+print("*****STATICFILES_DIRS*****")
+print(STATICFILES_DIRS)
 
 # Stripe
 STRIPE_CURRENCY = 'nok'
