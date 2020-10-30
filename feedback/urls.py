@@ -3,5 +3,5 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.feedback_view, name='feedback'),
+    path('', views.feedback_view, name='feedback_view'),
 ]
