@@ -3,5 +3,21 @@
 
 {% block content %}
     <h1>FEEDBACK</h1>
-    {{ pool_table_objects }}
+    <form action="." method="POST" id="feedback-form">
+        {% csrf_token %}
+        <fieldset class="rounded px-3 mb-5">
+            <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
+           {{ table_form.table_number | as_crispy_field }}
+           {{ table_form.clean_rating | as_crispy_field }}
+           {{ table_form.damage_rating | as_crispy_field }}
+           {{ review_form.review_text | as_crispy_field }}
+           {{ review_form.rating | as_crispy_field }}
+        </fieldset>
+        <button id="submit-button" class="btn btn-success rounded-0">
+            <span class="font-weight-bold">Submit feedback</span>
+            <span class="icon">
+                <i class="fas fa-lock"></i>
+            </span>
+        </button>
+    </form>
 {% endblock %}
