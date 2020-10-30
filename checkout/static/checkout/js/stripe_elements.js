@@ -42,10 +42,7 @@ card.addEventListener('change', function (event) {
         errorDiv.textContent = '';
     }
 });
-if (typeof jQuery != 'undefined') {  
-    // jQuery is loaded => print the version
-    alert(jQuery.fn.jquery);
-}
+
 // Handle form submit
 var form = document.getElementById('payment-form');
 
