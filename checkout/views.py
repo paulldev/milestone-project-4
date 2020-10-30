@@ -39,6 +39,7 @@ def checkout(request):
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
+            'table_number': request.POST['table_number'],
         }
         order_form = OrderForm(form_data)
 

@@ -12,6 +12,7 @@ class Order(models.Model):
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=True, blank=True)
+    table_number = models.IntegerField(null=False, default=1)
     date = models.DateTimeField(auto_now_add=True)
     total = models.IntegerField(null=False, default=0)
     original_cart = models.TextField(null=False, blank=False, default='')

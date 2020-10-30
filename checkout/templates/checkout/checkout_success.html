@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col">
                 <h2 class="logo-font mb-4">Thank You</h2>
-                <p class="text-black">Your order will be delivered to your table shortly. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                <p class="text-black">Your order will be delivered to your table {{ order.table_number }} shortly. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
             </div>
         </div>
 
@@ -63,10 +63,10 @@
 
                     <div class="row">
                         <div class="col-12 col-md-4">
-                            <p class="mb-0 text-black font-weight-bold">Full Name</p>
+                            <p class="mb-0 text-black font-weight-bold">Table number</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ order.full_name }}</p>
+                            <p class="mb-0">{{ order.table_number }}</p>
                         </div>
                     </div>
 
