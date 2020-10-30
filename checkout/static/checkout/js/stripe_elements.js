@@ -76,6 +76,7 @@ form.addEventListener('submit', function(ev) {
             },
         }).then(function(result) {
             if (result.error) {
+                console.log("1.result.error");
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
                     <span class="icon" role="alert">
@@ -89,12 +90,15 @@ form.addEventListener('submit', function(ev) {
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    form.submit();
+                    console.log("2.result.paymentIntent.status");
+                    setTimeout(function () { form.submit(); }, 1000)
                 }
             }
         });
     }).fail(function () {
+        console.log("3.fail");
+        setTimeout(function () { location.reload(); }, 1000)
         // just reload the page, the error will be in django messages
-        location.reload();
+        
     })
 });
