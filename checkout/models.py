@@ -14,7 +14,9 @@ class Order(models.Model):
     phone_number = models.CharField(max_length=20, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     total = models.IntegerField(null=False, default=0)
-    
+    original_cart = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
+       
     def _generate_order_number(self):
         """
         Generate a random, unique order number using UUID
