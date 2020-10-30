@@ -1,5 +1,10 @@
 from django.http import HttpResponse
 
+from .models import Order, OrderLineItem
+from products.models import Product
+
+import json
+import time
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -21,7 +26,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        cart = intent.metadata.bag
+        cart = intent.metadata.cart
         save_info = intent.metadata.save_info
 
         billing_details = intent.charges.data[0].billing_details
@@ -54,10 +59,10 @@ class StripeWH_Handler:
                     full_name=shipping_details.name,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
-                    original_bag=bag,
+                    original_cart=cart,
                     stripe_pid=pid,
                 )
-                for item_id, item_data in json.loads(bag).items():
+                for item_id, item_data in json.loads(cart).items():
                     product = Product.objects.get(id=item_id)
                     if isinstance(item_data, int):
                         order_line_item = OrderLineItem(
