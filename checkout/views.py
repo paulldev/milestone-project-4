@@ -81,8 +81,8 @@ def checkout(request):
             return redirect(reverse('products'))
     
         current_cart = cart_contents(request)
-        stripe_total = current_cart['total']*100
-    
+        total = current_cart['total']
+        stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create(
             amount=stripe_total,
