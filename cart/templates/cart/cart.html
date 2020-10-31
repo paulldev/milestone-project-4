@@ -82,15 +82,12 @@
 			</div>
 			{% else %}
 			<p class="lead mb-5">Your drinks order is empty.</p>
-			<a
-				href="{% url 'products' %}"
-				class="btn btn-outline-black rounded-0 btn-lg"
-			>
-				<span class="icon">
-					<i class="fas fa-chevron-left"></i>
-				</span>
-				<span class="text-uppercase">Order drinks</span>
-			</a>
+                <a href="{% url 'products' %}" class="btn btn-outline-dark">
+                    <span class="icon">
+                        <i class="fas fa-chevron-left"></i>
+                    </span>
+                    <span>Back to menu</span>
+                </a>
 			{% endif %}
 		</div>
 	</div>
