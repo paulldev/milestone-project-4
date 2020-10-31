@@ -18,37 +18,35 @@
 
         <div class="row">
             <div class="col-12 col-lg-6 order-lg-last mb-5">
-                <p class="text-muted">Order Summary ({{ product_count }})</p>
+                <p>Order Summary ({{ product_count }})</p>
                 <div class="row">
                     <div class="col-7 offset-2">
-                        <p class="mb-1 mt-0 small text-muted">Item</p>
+                        <p class="mb-1 mt-0 small">Item</p>
                     </div>
                     <div class="col-3 text-right">
-                        <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                        <p class="mb-1 mt-0 small">Subtotal</p>
                     </div>
                 </div>
                 {% for item in cart_items %}
                     <div class="row">
                         <div class="col-2 mb-1">
-                            <a href="{% url 'products' item.product.id %}">
-                                {% if item.product.image %}
-                                    <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
-                                {% else %}
-                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                {% endif %}
-                            </a>
+                            {% if item.product.image %}
+                                <img class="w-100" src="{{ item.product.image.url }}" alt="{{ product.name }}">
+                            {% else %}
+                                <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                            {% endif %}
                         </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
-                            <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
+                            <p class="my-0 small">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small text-muted">NOK {{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            <p class="my-0">NOK {{ item.product.price | calc_subtotal:item.quantity }}</p>
                         </div>
                     </div>
                 {% endfor %}
                 <hr class="my-0">
-                <div class="row text-black text-right">
+                <div class="row pt-1 text-right">
                     <div class="col-7 offset-2">
                         <p class="my-0">Total:</p>
                     </div>
@@ -58,16 +56,16 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6">
-                <p class="text-muted">Please fill out the form below to complete your order</p>
+                <p>Please fill out the form below to complete your order</p>
                 <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                     {% csrf_token %}
-                    <fieldset class="rounded px-3 mb-5">
+                    <fieldset class="rounded px-3 mb-1">
                         <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                         {{ order_form.full_name | as_crispy_field }}
                         {{ order_form.email | as_crispy_field }}
                     </fieldset>
-                    <fieldset class="rounded px-3 mb-5">
-                        <legend class="fieldset-label small text-black px-2 w-auto">Table number</legend>
+                    <fieldset class="rounded px-3 mb-1">
+                        <legend class="fieldset-label small px-2 w-auto">Table number</legend>
                         {{ order_form.table_number | as_crispy_field }}
                         <div class="form-check form-check-inline float-right mr-0">
 							{% if user.is_authenticated %}
@@ -99,13 +97,13 @@
 							</span>
 							<span>Back to menu</span>
 						</a>
-						<button id="submit-button" class="btn btn-success">
+						<button id="submit-button" class="btn btn-success mr-3">
 							<span>Complete Order</span>
 							<span class="icon">
 								<i class="fas fa-lock"></i>
 							</span>
 						</button>
-						<p class="small text-danger my-0">
+						<p class="small text-danger pt-2 my-0">
 							<span class="icon">
 								<i class="fas fa-exclamation-circle"></i>
 							</span>
