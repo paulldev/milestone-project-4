@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block content %}
+    <div class="overlay"></div>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -84,8 +85,28 @@
                             <p class="mb-0">NOK {{ order.total }}</p>
                         </div>
                     </div>
-                </div>           
+
+                </div>
+                                    							<a
+								href="{% url 'products' %}"
+								class="btn btn-outline-dark"
+							>
+								<span class="icon">
+									<i class="fas fa-chevron-left"></i>
+								</span>
+								<span>Back to menu</span
+								>
+							</a>
+							<a href="{% url 'checkout' %}" class="btn btn btn-success">
+								<span>Home</span
+								>
+								<span class="icon">
+									<i class="fas fa-home"></i>
+								</span>
+							</a>
+           
             </div>
+            
         </div>
     </div>
 {% endblock %}
