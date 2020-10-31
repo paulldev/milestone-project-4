@@ -10,11 +10,11 @@ def feedback_view(request):
     if request.method == 'POST':
         table_form = TableForm(request.POST)
         review_form = ReviewForm(request.POST)
-
+        
         if table_form.is_valid() and review_form.is_valid():
             table_form.save()
             review_form.save()
-            return HttpResponseRedirect('feedback_received')        
+            return HttpResponseRedirect('feedback_received') #redirect after POST       
         else:
             context = {
                 'table_form': table_form,
