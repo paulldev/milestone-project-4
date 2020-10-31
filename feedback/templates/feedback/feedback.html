@@ -3,7 +3,7 @@
 
 {% block content %}
     <h1>FEEDBACK</h1>
-    <form action="{% url 'feedback_received' %}" method="POST" id="feedback-form">
+    <form action="{% url 'feedback_view' %}" method="POST" id="feedback-form">
         {% csrf_token %}
         <fieldset class="rounded px-3 mb-5">
             <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
