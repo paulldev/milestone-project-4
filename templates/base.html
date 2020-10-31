@@ -93,7 +93,8 @@
                                 <div class="text-center">
                                     <div>
                                         <i class="fas fa-shopping-cart"></i>
-                                        </i><span class="badge badge-pill badge-danger">1</span>
+                                        {% if product_count %}</i><span class="badge badge-pill badge-danger">
+                                        {{ product_count }}{% endif %}</span>
                                     </div>
                                     <p class="my-0">
                                         {% if total %}
