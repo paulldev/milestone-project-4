@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from .models import PoolTable, Review
 from .forms import TableForm, ReviewForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -13,7 +14,7 @@ def feedback_view(request):
         if table_form.is_valid() and review_form.is_valid():
             table_form.save()
             review_form.save()
-            return HttpResponseRedirect('/success')        
+            return HttpResponseRedirect('feedback_received')        
         else:
             context = {
                 'table_form': table_form,
@@ -25,3 +26,12 @@ def feedback_view(request):
             'review_form': ReviewForm(),
         }
     return render(request, "feedback/feedback.html", context)
+
+
+def feedback_received(request):
+    template = 'feedback/feedback_received.html'
+    context = {
+        
+    }
+
+    return render(request, template, context)
