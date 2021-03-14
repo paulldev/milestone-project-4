@@ -37,6 +37,7 @@ I want staff to be able to:
 > How is the information structured and how is it logically grouped.
 
 The data will be stored in a PostgreSQL database with the following structure:
+
 **1. Category (type of drink):**
 - name (hot drinks, non alcoholic, wine, spirits, beer)
 - friendly name
